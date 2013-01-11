@@ -62,7 +62,7 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Fri Jan 11 2012 Ian Firns <firnsy@kororaproject.com> - 1.2.12-2
+* Fri Jan 11 2013 Ian Firns <firnsy@kororaproject.com> - 1.2.12-2
 - Update to 1.2.12
 
 * Mon Mar 12 2012 Remi Collet <RPMS@famillecollet.com> - 1.2.12-1
