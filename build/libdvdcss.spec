@@ -1,13 +1,14 @@
 Summary:    A portable abstraction library for DVD decryption
 Name:       libdvdcss
 Version:    1.2.12
-Release:    2%{?dist}
+Release:    2%{?dist}.1
 License:    GPLv2+
 Group:      System Environment/Libraries
 Source:     http://www.videolan.org/pub/videolan/libdvdcss/%{version}/libdvdcss-%{version}.tar.bz2
 URL:        http://www.videolan.org/libdvdcss/
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Obsoletes:  libdvdcss2
 
 
 %description
