@@ -1,7 +1,7 @@
 Summary:    A portable abstraction library for DVD decryption
 Name:       libdvdcss
 Version:    1.2.13
-Release:    1%{?dist}
+Release:    2%{?dist}
 License:    GPLv2+
 Group:      System Environment/Libraries
 Source:     http://www.videolan.org/pub/videolan/libdvdcss/%{version}/libdvdcss-%{version}.tar.bz2
@@ -10,6 +10,7 @@ URL:        http://www.videolan.org/libdvdcss/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Obsoletes:  libdvdcss2
 BuildRequires: doxygen
+Requires(post): ldconfig
 
 
 %description
@@ -17,7 +18,6 @@ This is a portable abstraction library for DVD decryption which is used by
 the VideoLAN project, a full MPEG2 client/server solution.  You will need
 to install this package in order to have encrypted DVD playback with the
 VideoLAN client and the Xine navigation plugin.
-
 
 %package devel
 Summary:     Header files and development libraries for %{name}
@@ -30,15 +30,12 @@ This package contains the header files and development libraries
 for %{name}. If you like to develop programs using %{name}, 
 you will need to install %{name}-devel.
 
-
 %prep
 %setup -q
-
 
 %build
 %configure
 make %{_smp_mflags}
-
 
 %install
 rm -rf %{buildroot}
@@ -51,6 +48,9 @@ mv %{buildroot}/usr/share/doc/libdvdcss docdir
 %clean
 rm -rf %{buildroot}
 
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(-,root,root,-)
@@ -68,6 +68,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Fri Nov 15 2013 Simone Caronni <negativo17@gmail.com> - 1.2.13-2
+- Run ldconfig in scriptlets.
+
 * Wed Feb 27 2013 Remi Collet <RPMS@famillecollet.com> - 1.2.13-1
 - Update to 1.2.13
 
